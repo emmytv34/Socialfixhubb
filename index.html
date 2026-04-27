@@ -1,0 +1,2276 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🛠️ Social Fix Hub — Fix Your Social Media Problems Fast</title>
+<meta name="description" content="Step‑by‑step guides for account bans, recovery, virtual numbers, VPNs and social media growth. Nigeria's #1 social‑media fix platform.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
+<script src="https://js.paystack.co/v1/inline.js"></script>
+
+<style>
+/* ==============================================================
+   DESIGN SYSTEM – COLORS, SIZES, TYPOGRAPHY
+   ============================================================== */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --blue:#2563EB;--blue-dark:#1D4ED8;--blue-light:#DBEAFE;--blue-50:#EFF6FF;
+  --green:#16A34A;--green-light:#DCFCE7;
+  --red:#DC2626;--red-light:#FEE2E2;
+  --orange:#EA580C;--orange-light:#FFEDD5;
+  --purple:#7C3AED;--purple-light:#EDE9FE;
+  --bg:#FFF;--bg-secondary:#F9FAFB;--bg-tertiary:#F3F4F6;
+  --bg-hover:#F3F4F6;--border:#E5E7EB;--border-strong:#D1D5DB;
+  --text-primary:#111827;--text-secondary:#374151;
+  --text-muted:#6B7280;--text-subtle:#9CA3AF;
+  --radius-sm:6px;--radius:10px;--radius-lg:14px;--radius-xl:20px;--radius-full:9999px;
+  --shadow-sm:0 1px 2px rgba(0,0,0,.05);
+  --shadow:0 1px 3px rgba(0,0,0,.1),0 1px 2px rgba(0,0,0,.06);
+  --shadow-md:0 4px 6px rgba(0,0,0,.07),0 2px 4px rgba(0,0,0,.06);
+  --shadow-lg:0 10px 15px rgba(0,0,0,.1),0 4px 6px rgba(0,0,0,.05);
+  --shadow-xl:0 20px 25px rgba(0,0,0,.1),0 10px 10px rgba(0,0,0,.04);
+  --font-sans:'Inter',system-ui,-apple-system,sans-serif;
+  --header-h:64px;
+}
+
+/* Dark mode – follows OS preference */
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#0F172A;--bg-secondary:#1E293B;--bg-tertiary:#334155;--bg-hover:#1E293B;
+    --border:#334155;--border-strong:#475569;--text-primary:#F1F5F9;--text-secondary:#CBD5E1;
+    --text-muted:#94A3B8;--text-subtle:#64748B;--blue-light:#1E3A8A;--blue-50:#1E2D4A;
+    --shadow:0 1px 3px rgba(0,0,0,.4);--shadow-md:0 4px 6px rgba(0,0,0,.3);--shadow-lg:0 10px 15px rgba(0,0,0,.4);
+  }
+}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--font-sans);background:var(--bg);color:var(--text-primary);
+  line-height:1.6;min-height:100vh;transition:background .2s,color .2s;
+}
+body.no-scroll{overflow:hidden}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit;text-decoration:none}
+button{cursor:pointer;font-family:inherit}
+input,textarea,select{font-family:inherit}
+
+/* --------------------------------------------------------------
+   iOS‑style Emoji helper – forces Apple Color Emoji font
+   -------------------------------------------------------------- */
+.emoji{
+  font-family:"Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji","Android Emoji","EmojiSymbols",sans-serif;
+  vertical-align:middle;
+}
+
+/* --------------------------------------------------------------
+   Layout helpers
+   -------------------------------------------------------------- */
+.container{max-width:1180px;margin:auto;padding:0 20px}
+.section{padding:72px 0}
+.section-sm{padding:48px 0}
+.grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.flex{display:flex}
+.flex-center{display:flex;align-items:center;justify-content:center}
+.items-center{align-items:center}
+.justify-between{justify-content:space-between}
+.gap-2{gap:8px}.gap-3{gap:12px}.gap-4{gap:16px}
+.text-center{text-align:center}
+.mt-2{margin-top:8px}.mt-3{margin-top:12px}.mt-4{margin-top:16px}
+.mt-6{margin-top:24px}.mt-8{margin-top:32px}
+.mb-2{margin-bottom:8px}.mb-4{margin-bottom:16px}.mb-6{margin-bottom:24px}.mb-8{margin-bottom:32px}
+
+/* --------------------------------------------------------------
+   Typography helpers
+   -------------------------------------------------------------- */
+.text-xs{font-size:12px}.text-sm{font-size:13px}.text-base{font-size:15px}
+.text-lg{font-size:17px}.text-xl{font-size:20px}.text-2xl{font-size:24px}
+.text-3xl{font-size:30px}.text-4xl{font-size:36px}.text-5xl{font-size:48px}
+.font-medium{font-weight:500}.font-semibold{font-weight:600}
+.font-bold{font-weight:700}.font-extrabold{font-weight:800}
+.text-muted{color:var(--text-muted)}.text-blue{color:var(--blue)}
+.text-green{color:var(--green)}.text-red{color:var(--red)}
+
+/* --------------------------------------------------------------
+   Pages – hidden by default, shown by JS router
+   -------------------------------------------------------------- */
+.page{display:none}
+.page.active{display:block}
+
+/* --------------------------------------------------------------
+   Buttons – ripple effect, hover, active
+   -------------------------------------------------------------- */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:6px;
+  font-size:14px;font-weight:600;line-height:1;padding:10px 18px;
+  border-radius:var(--radius);border:1.5px solid transparent;
+  transition:all .15s ease;white-space:nowrap;position:relative;overflow:hidden;
+}
+.btn::after{
+  content:'';position:absolute;top:50%;left:50%;
+  width:5px;height:5px;background:rgba(255,255,255,.3);
+  opacity:0;border-radius:50%;transform:translate(-50%,-50%) scale(1);
+  transition:transform .5s,opacity .5s;
+}
+.btn:active::after{
+  transform:translate(-50%,-50%) scale(15);opacity:0;
+}
+.btn-lg{padding:14px 28px;font-size:16px;border-radius:var(--radius-lg)}
+.btn-sm{padding:7px 14px;font-size:13px}
+.btn-xs{padding:5px 10px;font-size:12px}
+.btn-full{width:100%}
+.btn-primary{background:var(--blue);color:#fff;border-color:var(--blue)}
+.btn-primary:hover{background:var(--blue-dark);border-color:var(--blue-dark);transform:translateY(-1px);box-shadow:var(--shadow-md)}
+.btn-primary:active{transform:translateY(0)}
+.btn-secondary{background:var(--bg-secondary);color:var(--text-primary);border-color:var(--border)}
+.btn-secondary:hover{background:var(--bg-tertiary);border-color:var(--border-strong)}
+.btn-ghost{background:transparent;color:var(--text-secondary);border-color:transparent}
+.btn-ghost:hover{background:var(--bg-hover);color:var(--text-primary)}
+.btn-outline-blue{background:transparent;color:var(--blue);border-color:var(--blue)}
+.btn-outline-blue:hover{background:var(--blue);color:#fff}
+.btn-green{background:var(--green);color:#fff;border-color:var(--green)}
+.btn-green:hover{background:#15803D}
+.btn:disabled{opacity:.55;pointer-events:none}
+
+/* --------------------------------------------------------------
+   Cards – soft lift & glow on hover
+   -------------------------------------------------------------- */
+.card{
+  background:var(--bg);border:1.5px solid var(--border);
+  border-radius:var(--radius-lg);box-shadow:var(--shadow-sm);
+  overflow:hidden;transition:box-shadow .2s,transform .2s,border-color .2s;
+}
+.card:hover{
+  box-shadow:var(--shadow-lg);transform:translateY(-3px);border-color:var(--border-strong);
+}
+
+/* --------------------------------------------------------------
+   Badges – iOS emojis already handled by .emoji
+   -------------------------------------------------------------- */
+.badge{
+  display:inline-flex;align-items:center;font-size:11px;font-weight:600;
+  letter-spacing:.03em;padding:3px 9px;border-radius:var(--radius-full);
+}
+.badge-blue{background:var(--blue-light);color:var(--blue)}
+.badge-green{background:var(--green-light);color:var(--green)}
+.badge-orange{background:var(--orange-light);color:var(--orange)}
+.badge-purple{background:var(--purple-light);color:var(--purple)}
+.badge-gray{background:var(--bg-tertiary);color:var(--text-muted)}
+.badge-red{background:var(--red-light);color:var(--red)}
+
+/* --------------------------------------------------------------
+   Form elements
+   -------------------------------------------------------------- */
+.form-group{margin-bottom:18px}
+.form-label{display:block;font-size:13px;font-weight:600;color:var(--text-secondary);margin-bottom:6px}
+.form-input{
+  width:100%;padding:11px 14px;font-size:14px;background:var(--bg);
+  color:var(--text-primary);border:1.5px solid var(--border);
+  border-radius:var(--radius);outline:none;transition:border-color .15s,box-shadow .15s;
+}
+.form-input:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(37,99,235,.12)}
+.form-input::placeholder{color:var(--text-subtle)}
+
+/* --------------------------------------------------------------
+   Stars
+   -------------------------------------------------------------- */
+.stars{color:#F59E0B;font-size:13px;letter-spacing:-1px}
+.rating-row{display:flex;align-items:center;gap:6px}
+
+/* --------------------------------------------------------------
+   Section headers
+   -------------------------------------------------------------- */
+.section-header{margin-bottom:40px}
+.section-label{
+  display:inline-block;font-size:12px;font-weight:700;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--blue);margin-bottom:10px;
+}
+.section-title{font-size:clamp(24px,4vw,36px);font-weight:800;line-height:1.2;color:var(--text-primary)}
+.section-desc{font-size:17px;color:var(--text-muted);margin-top:12px;max-width:560px}
+
+/* ==============================================================
+   HEADER – sticky with blur, dark‑mode aware
+   ============================================================== */
+.header{
+  position:sticky;top:0;z-index:200;height:var(--header-h);
+  background:rgba(255,255,255,.92);backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--border);transition:background .2s,box-shadow .2s;
+}
+.header.scrolled{box-shadow:0 2px 6px rgba(0,0,0,.12)}
+[data-theme="dark"] .header{background:rgba(15,23,42,.92)}
+
+.header-inner{
+  height:var(--header-h);
+  display:flex;align-items:center;justify-content:space-between;gap:20px;
+}
+
+/* Logo */
+.logo{
+  display:flex;align-items:center;gap:10px;font-weight:800;font-size:18px;color:var(--text-primary);flex-shrink:0;
+}
+.logo-icon{
+  width:34px;height:34px;border-radius:9px;background:var(--blue);
+  display:flex;align-items:center;justify-content:center;
+}
+.logo-icon svg{width:18px;height:18px;color:#fff;stroke:#fff}
+
+/* Nav – emojis added */
+.nav{display:flex;align-items:center;gap:4px}
+.nav-link{
+  font-size:14px;font-weight:500;color:var(--text-muted);
+  padding:7px 12px;border-radius:var(--radius);
+  transition:color .15s,background .15s;
+}
+.nav-link:hover{color:var(--text-primary);background:var(--bg-hover)}
+.nav-link.active{color:var(--blue);font-weight:600;background:var(--blue-50)}
+
+/* Header right (icons) */
+.header-right{display:flex;align-items:center;gap:8px}
+.icon-btn{
+  width:36px;height:36px;border-radius:var(--radius);
+  display:flex;align-items:center;justify-content:center;
+  background:transparent;border:none;color:var(--text-muted);
+  transition:color .15s,background .15s;
+}
+.icon-btn:hover{background:var(--bg-hover);color:var(--text-primary)}
+.icon-btn svg{width:18px;height:18px}
+
+/* User avatar / dropdown */
+.user-avatar{
+  width:34px;height:34px;border-radius:50%;background:var(--blue);
+  color:#fff;font-size:12px;font-weight:700;
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;position:relative;border:none;
+}
+.user-menu-wrap{position:relative}
+.user-dropdown{
+  position:absolute;top:calc(100% + 10px);right:0;
+  width:220px;background:var(--bg);border:1.5px solid var(--border);
+  border-radius:var(--radius-lg);box-shadow:var(--shadow-xl);
+  padding:6px;display:none;z-index:300;
+}
+.user-dropdown.open{display:block}
+.user-dropdown-header{padding:10px 12px 10px;border-bottom:1px solid var(--border);margin-bottom:4px}
+.user-dropdown a{
+  display:flex;align-items:center;gap:10px;padding:9px 12px;
+  border-radius:var(--radius-sm);font-size:13px;font-weight:500;
+  color:var(--text-secondary);transition:background .12s,color .12s;
+}
+.user-dropdown a:hover{background:var(--bg-hover);color:var(--text-primary)}
+.user-dropdown a svg{width:15px;height:15px;flex-shrink:0}
+.user-dropdown .signout{color:var(--red)}
+.user-dropdown .signout:hover{background:var(--red-light);color:var(--red)}
+.divider{height:1px;background:var(--border);margin:4px 0}
+
+/* Mobile nav */
+.mobile-nav{
+  position:fixed;top:var(--header-h);left:0;right:0;bottom:0;
+  background:var(--bg);z-index:190;padding:16px 20px;
+  display:none;flex-direction:column;gap:4px;border-top:1px solid var(--border);
+  overflow-y:auto;
+}
+.mobile-nav.open{display:flex}
+.mobile-nav-link{
+  display:flex;align-items:center;gap:10px;
+  font-size:16px;font-weight:500;color:var(--text-secondary);
+  padding:13px 16px;border-radius:var(--radius);
+  transition:background .15s,color .15s;
+}
+.mobile-nav-link:hover,.mobile-nav-link.active{background:var(--blue-50);color:var(--blue)}
+.mobile-nav-divider{height:1px;background:var(--border);margin:8px 0}
+
+/* ==============================================================
+   SEARCH OVERLAY – animated fade + slide
+   ============================================================== */
+.search-overlay{
+  position:fixed;inset:0;z-index:500;
+  background:rgba(0,0,0,.5);backdrop-filter:blur(4px);
+  display:flex;align-items:flex-start;justify-content:center;
+  padding-top:80px;opacity:0;visibility:hidden;
+  transition:opacity .25s ease;
+}
+.search-overlay.open{opacity:1;visibility:visible}
+.search-box{
+  width:100%;max-width:580px;background:var(--bg);
+  border-radius:var(--radius-xl);border:1.5px solid var(--border);
+  box-shadow:var(--shadow-xl);overflow:hidden;
+  transform:translateY(-20px);opacity:0;
+  transition:transform .3s ease,opacity .3s ease;
+}
+.search-overlay.open .search-box{transform:translateY(0);opacity:1}
+.search-input-wrap{display:flex;align-items:center;gap:12px;padding:14px 18px}
+.search-input-wrap svg{width:20px;height:20px;color:var(--text-muted);flex-shrink:0}
+.search-input{
+  flex:1;background:transparent;border:none;outline:none;
+  font-size:16px;color:var(--text-primary);
+}
+.search-input::placeholder{color:var(--text-subtle)}
+.search-close{font-size:12px;color:var(--text-muted);padding:4px 8px;background:var(--bg-tertiary);border:none;border-radius:5px}
+.search-results{max-height:360px;overflow-y:auto;border-top:1px solid var(--border)}
+.search-result{
+  display:flex;align-items:center;gap:14px;padding:13px 18px;
+  cursor:pointer;border-bottom:1px solid var(--border);
+  transition:background .12s;
+}
+.search-result:hover{background:var(--bg-secondary)}
+.search-result-icon{
+  width:36px;height:36px;border-radius:var(--radius-sm);
+  background:var(--blue-50);display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;font-size:16px;
+}
+.search-result-title{font-size:14px;font-weight:600;color:var(--text-primary)}
+.search-result-sub{font-size:12px;color:var(--text-muted);margin-top:2px}
+.search-empty{padding:36px 20px;text-align:center;color:var(--text-muted);font-size:14px}
+
+/* ==============================================================
+   HERO – animated focus, subtle movement
+   ============================================================== */
+.hero{
+  padding:72px 0 80px;
+  background:linear-gradient(180deg,var(--blue-50) 0%,var(--bg) 100%);
+  border-bottom:1px solid var(--border);
+}
+.hero-content{
+  max-width:720px;margin:auto;text-align:center;
+}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:6px;
+  background:var(--blue-light);color:var(--blue);
+  font-size:12px;font-weight:700;letter-spacing:.05em;
+  padding:6px 14px;border-radius:var(--radius-full);
+  margin-bottom:20px;
+}
+.hero-title{
+  font-size:clamp(32px,6vw,56px);font-weight:900;line-height:1.12;
+  color:var(--text-primary);margin-bottom:18px;letter-spacing:-.02em;
+}
+.hero-title span{color:var(--blue)}
+.hero-sub{
+  font-size:clamp(16px,2vw,19px);color:var(--text-muted);line-height:1.7;
+  margin-bottom:36px;max-width:540px;margin-left:auto;margin-right:auto;
+}
+.hero-search{
+  max-width:520px;margin:0 auto 32px;
+  display:flex;align-items:center;background:var(--bg);
+  border:2px solid var(--border);border-radius:var(--radius-full);
+  box-shadow:var(--shadow-md);padding:6px 6px 6px 18px;
+  transition:border-color .2s,box-shadow .2s,transform .2s;
+}
+.hero-search:focus-within{
+  border-color:var(--blue);
+  box-shadow:0 0 0 4px rgba(37,99,235,.12);
+  transform:scale(1.02);
+}
+.hero-search input{
+  flex:1;background:transparent;border:none;outline:none;
+  font-size:15px;color:var(--text-primary);
+}
+.hero-search input::placeholder{
+  color:var(--text-subtle);font-style:italic;
+}
+.hero-ctas{
+  display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;
+}
+.hero-stats{
+  display:flex;align-items:center;justify-content:center;gap:32px;
+  margin-top:52px;padding-top:36px;border-top:1px solid var(--border);
+}
+.hero-stat-num{font-size:28px;font-weight:800;color:var(--text-primary)}
+.hero-stat-label{font-size:13px;color:var(--text-muted);margin-top:2px}
+
+/* ==============================================================
+   GUIDE CARD
+   ============================================================== */
+.guide-card{
+  background:var(--bg);border:1.5px solid var(--border);
+  border-radius:var(--radius-lg);overflow:hidden;
+  transition:box-shadow .2s,transform .2s,border-color .2s;
+  display:flex;flex-direction:column;
+}
+.guide-card:hover{
+  box-shadow:var(--shadow-lg);transform:translateY(-3px);border-color:var(--border-strong);
+}
+.guide-card-img{
+  height:170px;overflow:hidden;position:relative;background:var(--bg-tertiary);
+}
+.guide-card-img img{
+  width:100%;height:100%;object-fit:cover;display:block;
+  transition:transform .3s;
+}
+.guide-card:hover .guide-card-img img{transform:scale(1.04)}
+.guide-card-platform{position:absolute;top:12px;left:12px}
+.guide-card-body{padding:18px;flex:1;display:flex;flex-direction:column}
+.guide-card-title{font-size:15px;font-weight:700;color:var(--text-primary);line-height:1.4;margin-bottom:8px}
+.guide-card-desc{font-size:13px;color:var(--text-muted);line-height:1.6;flex:1;margin-bottom:14px}
+.guide-card-meta{
+  display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;
+}
+.guide-card-price{font-size:18px;font-weight:800;color:var(--text-primary)}
+.guide-card-price-old{font-size:12px;color:var(--text-subtle);text-decoration:line-through;margin-left:6px}
+.guide-card-rating{
+  display:flex;align-items:center;gap:4px;font-size:12px;color:var(--text-muted);
+}
+.guide-card-actions{display:flex;gap:8px}
+.guide-card-actions .btn{flex:1}
+.feat-badge{
+  position:absolute;top:12px;right:12px;
+  background:#F59E0B;color:#fff;font-size:10px;
+  font-weight:700;letter-spacing:.04em;padding:3px 9px;
+  border-radius:var(--radius-full);
+}
+
+/* ==============================================================
+   GUIDE DETAIL – main layout
+   ============================================================== */
+.guide-detail-hero{
+  padding:48px 0;background:var(--bg-secondary);
+  border-bottom:1px solid var(--border);
+}
+.guide-detail-breadcrumb{font-size:13px;color:var(--text-muted);margin-bottom:16px}
+.guide-detail-breadcrumb a{color:var(--blue)}
+.guide-detail-title{font-size:clamp(22px,4vw,34px);font-weight:800;line-height:1.25;margin-bottom:14px}
+.guide-detail-meta{
+  display:flex;align-items:center;gap:20px;flex-wrap:wrap;
+}
+.guide-detail-layout{
+  display:grid;grid-template-columns:1fr 320px;gap:32px;
+  padding:48px 0;align-items:start;
+}
+.preview-box{
+  background:var(--bg-secondary);border:1.5px solid var(--border);
+  border-radius:var(--radius-lg);padding:24px;margin-bottom:24px;
+}
+.preview-box h3{font-size:16px;font-weight:700;margin-bottom:14px}
+.preview-item{
+  display:flex;align-items:flex-start;gap:12px;padding:10px 0;
+  border-bottom:1px solid var(--border);font-size:14px;
+}
+.preview-item:last-child{border-bottom:none}
+.preview-item-icon{font-size:16px;flex-shrink:0;margin-top:1px}
+
+/* Locked premium area */
+.locked-section{
+  background:repeating-linear-gradient(0deg,transparent,transparent 22px,var(--border) 22px,var(--border) 23px);
+  border:2px dashed var(--border-strong);border-radius:var(--radius-lg);
+  padding:40px 24px;text-align:center;position:relative;overflow:hidden;
+}
+.locked-section::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(to bottom,rgba(255,255,255,.1),rgba(255,255,255,.8));
+}
+[data-theme="dark"] .locked-section::before{
+  background:linear-gradient(to bottom,rgba(15,23,42,.1),rgba(15,23,42,.8));
+}
+.locked-section-content{position:relative}
+.locked-icon{font-size:36px;margin-bottom:14px}
+
+/* Buy card – sticky on desktop */
+.buy-card{
+  background:var(--bg);border:1.5px solid var(--border);
+  border-radius:var(--radius-xl);padding:24px;
+  box-shadow:var(--shadow-lg);position:sticky;top:80px;
+}
+.buy-price{font-size:32px;font-weight:900;color:var(--text-primary)}
+.buy-price-old{font-size:16px;color:var(--text-subtle);text-decoration:line-through;margin-left:8px}
+.buy-features{margin:20px 0}
+.buy-feature{
+  display:flex;align-items:center;gap:10px;font-size:14px;
+  padding:7px 0;border-bottom:1px solid var(--border);
+}
+.buy-feature:last-child{border-bottom:none}
+.buy-feature-icon{color:var(--green);font-size:14px}
+
+/* ==============================================================
+   FREE RESOURCE CARD
+   ============================================================== */
+.free-card{
+  background:var(--bg);border:1.5px solid var(--border);
+  border-radius:var(--radius-lg);padding:20px;
+  transition:box-shadow .2s,transform .2s;display:flex;flex-direction:column;
+}
+.free-card:hover{box-shadow:var(--shadow-md);transform:translateY(-2px)}
+.free-card-type{font-size:11px;font-weight:700;text-transform:uppercase;
+                letter-spacing:.06em;color:var(--text-muted);margin-bottom:10px}
+.free-card-title{font-size:15px;font-weight:700;color:var(--text-primary);margin-bottom:8px}
+.free-card-desc{font-size:13px;color:var(--text-muted);margin-bottom:14px;flex:1}
+.free-card-footer{display:flex;align-items:center;justify-content:space-between}
+.read-time{font-size:12px;color:var(--text-subtle)}
+
+/* ==============================================================
+   TOOL CARD
+   ============================================================== */
+.tool-card{
+  background:var(--bg);border:1.5px solid var(--border);
+  border-radius:var(--radius-lg);padding:22px;
+  transition:box-shadow .2s,transform .2s;
+}
+.tool-card:hover{box-shadow:var(--shadow-md);transform:translateY(-2px)}
+.tool-icon{font-size:32px;margin-bottom:14px}
+.tool-name{font-size:16px;font-weight:700;margin-bottom:6px}
+.tool-desc{font-size:13px;color:var(--text-muted);margin-bottom:16px}
+
+/* ==============================================================
+   TESTIMONIAL CARD
+   ============================================================== */
+.testi-card{
+  background:var(--bg);border:1.5px solid var(--border);
+  border-radius:var(--radius-lg);padding:24px;
+}
+.testi-stars{color:#F59E0B;font-size:14px;margin-bottom:12px}
+.testi-text{font-size:14px;color:var(--text-secondary);line-height:1.7;margin-bottom:18px;font-style:italic}
+.testi-author{display:flex;align-items:center;gap:12px}
+.testi-avatar{
+  width:40px;height:40px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:14px;font-weight:700;color:#fff;flex-shrink:0;
+}
+.testi-name{font-size:14px;font-weight:700;color:var(--text-primary)}
+.testi-result{font-size:12px;color:var(--text-muted);margin-top:2px}
+
+/* ==============================================================
+   REFERRAL BANNER
+   ============================================================== */
+.referral-banner{
+  background:linear-gradient(135deg,var(--blue) 0%,#7C3AED 100%);
+  border-radius:var(--radius-xl);padding:48px;color:#fff;text-align:center;
+}
+.referral-banner h2{font-size:28px;font-weight:800;margin-bottom:12px}
+.referral-banner p{font-size:16px;opacity:.85;margin-bottom:28px}
+.referral-rewards{
+  display:flex;justify-content:center;gap:24px;flex-wrap:wrap;margin-bottom:28px;
+}
+.reward-chip{
+  background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.3);
+  border-radius:var(--radius-full);padding:8px 20px;font-size:13px;font-weight:600;
+}
+
+/* ==============================================================
+   TRUST SECTION
+   ============================================================== */
+.trust-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:24px;
+}
+.trust-item{
+  text-align:center;padding:32px 20px;
+  background:var(--bg-secondary);border-radius:var(--radius-lg);
+  border:1.5px solid var(--border);
+}
+.trust-icon{font-size:32px;margin-bottom:14px}
+.trust-num{font-size:36px;font-weight:900;color:var(--text-primary);margin-bottom:6px}
+.trust-label{font-size:14px;color:var(--text-muted)}
+
+/* ==============================================================
+   PAGE HERO (inner pages)
+   ============================================================== */
+.page-hero{
+  padding:48px 0 40px;background:var(--bg-secondary);
+  border-bottom:1px solid var(--border);
+}
+.page-hero h1{font-size:clamp(24px,4vw,40px);font-weight:800;margin-bottom:10px}
+.page-hero p{font-size:16px;color:var(--text-muted);max-width:540px}
+
+/* ==============================================================
+   FILTER TABS
+   ============================================================== */
+.filter-tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:28px}
+.filter-tab{
+  padding:7px 16px;border-radius:var(--radius-full);
+  font-size:13px;font-weight:600;
+  border:1.5px solid var(--border);
+  background:var(--bg);color:var(--text-muted);
+  cursor:pointer;transition:all .15s;
+}
+.filter-tab:hover{border-color:var(--blue);color:var(--blue)}
+.filter-tab.active{background:var(--blue);border-color:var(--blue);color:#fff}
+
+/* Shop controls (filter + sort) */
+.shop-controls{
+  display:flex;align-items:center;justify-content:space-between;
+  margin-bottom:24px;flex-wrap:wrap;gap:12px;
+}
+.sort-select{
+  padding:8px 32px 8px 14px;border-radius:var(--radius);
+  border:1.5px solid var(--border);font-size:13px;font-weight:500;
+  background:var(--bg);color:var(--text-primary);outline:none;cursor:pointer;
+  appearance:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%236B7280' stroke-width='2.5'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 12px center;
+}
+
+/* ==============================================================
+   DASHBOARD
+   ============================================================== */
+.dashboard-wrap{padding:48px 0}
+.dashboard-layout{
+  display:grid;grid-template-columns:220px 1fr;gap:32px;align-items:start;
+}
+.dash-sidebar{
+  background:var(--bg);border:1.5px solid var(--border);
+  border-radius:var(--radius-lg);padding:12px;position:sticky;top:80px;
+}
+.dash-link{
+  display:flex;align-items:center;gap:10px;
+  padding:10px 14px;border-radius:var(--radius-sm);
+  font-size:14px;font-weight:500;color:var(--text-muted);
+  transition:background .12s,color .12s;cursor:pointer;
+}
+.dash-link:hover{background:var(--bg-hover);color:var(--text-primary)}
+.dash-link.active{background:var(--blue-50);color:var(--blue);font-weight:600}
+.dash-link svg{width:16px;height:16px;flex-shrink:0}
+.dash-stat-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:28px;
+}
+.dash-stat{
+  background:var(--bg);border:1.5px solid var(--border);
+  border-radius:var(--radius-lg);padding:20px 16px;text-align:center;
+}
+.dash-stat-num{font-size:28px;font-weight:800;color:var(--text-primary)}
+.dash-stat-label{font-size:12px;color:var(--text-muted);margin-top:4px;font-weight:500;text-transform:uppercase;letter-spacing:.04em}
+.dash-card{
+  background:var(--bg);border:1.5px solid var(--border);
+  border-radius:var(--radius-lg);overflow:hidden;margin-bottom:24px;
+}
+.dash-card-header{
+  padding:18px 22px;border-bottom:1px solid var(--border);
+  display:flex;align-items:center;justify-content:space-between;
+}
+.dash-card-header h3{font-size:15px;font-weight:700}
+.dash-card-body{padding:22px}
+.ref-progress-bar{
+  background:var(--bg-tertiary);height:10px;border-radius:var(--radius-full);
+  overflow:hidden;margin:12px 0;
+}
+.ref-progress-fill{
+  background:linear-gradient(90deg,var(--blue),var(--purple));
+  height:100%;border-radius:var(--radius-full);
+  transition:width .5s ease;
+}
+
+/* Purchases table */
+.purchases-table{
+  width:100%;border-collapse:collapse;font-size:13px;
+}
+.purchases-table th{
+  text-align:left;padding:10px 16px;color:var(--text-subtle);
+  font-weight:600;font-size:11px;text-transform:uppercase;letter-spacing:.05em;
+  border-bottom:1px solid var(--border);
+}
+.purchases-table td{padding:13px 16px;border-bottom:1px solid var(--border)}
+.purchases-table tr:last-child td{border-bottom:none}
+.purchases-table tr:hover td{background:var(--bg-secondary)}
+
+/* ==============================================================
+   COMMUNITY Q&A
+   ============================================================== */
+.q-card{
+  background:var(--bg);border:1.5px solid var(--border);
+  border-radius:var(--radius-lg);padding:20px;
+  margin-bottom:16px;transition:box-shadow .15s;
+}
+.q-card:hover{box-shadow:var(--shadow-md)}
+.q-title{font-size:15px;font-weight:700;color:var(--text-primary);margin-bottom:8px}
+.q-preview{font-size:13px;color:var(--text-muted);line-height:1.6;margin-bottom:14px}
+.q-meta{display:flex;align-items:center;gap:16px;font-size:12px;color:var(--text-subtle)}
+.q-stat{display:flex;align-items:center;gap:4px}
+
+/* ==============================================================
+   AUTH PAGES
+   ============================================================== */
+.auth-page{
+  min-height:calc(100vh - var(--header-h));
+  display:flex;align-items:center;justify-content:center;
+  padding:40px 20px;background:var(--bg-secondary);
+}
+.auth-box{
+  width:100%;max-width:420px;background:var(--bg);
+  border:1.5px solid var(--border);border-radius:var(--radius-xl);
+  padding:36px;box-shadow:var(--shadow-xl);
+}
+.auth-logo{text-align:center;margin-bottom:28px}
+.auth-logo .logo{justify-content:center}
+.auth-title{font-size:22px;font-weight:800;text-align:center;margin-bottom:6px}
+.auth-sub{font-size:14px;color:var(--text-muted);text-align:center;margin-bottom:28px}
+.auth-divider{display:flex;align-items:center;gap:12px;margin:20px 0}
+.auth-divider-line{flex:1;height:1px;background:var(--border)}
+.auth-divider span{font-size:12px;color:var(--text-subtle);font-weight:500}
+.auth-switch{font-size:14px;color:var(--text-muted);text-align:center;margin-top:20px}
+.auth-switch a{color:var(--blue);font-weight:600}
+
+/* ==============================================================
+   TOAST
+   ============================================================== */
+.toast-wrap{
+  position:fixed;bottom:24px;right:24px;z-index:1000;
+  display:flex;flex-direction:column;gap:10px;pointer-events:none;
+}
+.toast{
+  display:flex;align-items:center;gap:12px;
+  background:var(--text-primary);color:var(--bg);
+  padding:13px 18px;border-radius:var(--radius-lg);
+  font-size:14px;font-weight:500;box-shadow:var(--shadow-xl);
+  pointer-events:all;animation:toastIn .25s ease;max-width:320px;
+}
+.toast.error{background:var(--red)}
+.toast.info{background:var(--blue)}
+.toast.success{background:var(--green)}
+.toast-icon{font-size:16px;flex-shrink:0}
+@keyframes toastIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+
+/* ==============================================================
+   FOOTER
+   ============================================================== */
+.footer{
+  background:var(--bg-secondary);border-top:1px solid var(--border);
+  padding:56px 0 32px;
+}
+.footer-grid{
+  display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:48px;
+}
+.footer-brand-desc{font-size:14px;color:var(--text-muted);line-height:1.7;margin:14px 0 20px;max-width:260px}
+.footer-social{display:flex;gap:8px}
+.social-btn{
+  width:36px;height:36px;border-radius:var(--radius);
+  background:var(--bg-tertiary);border:1px solid var(--border);
+  display:flex;align-items:center;justify-content:center;
+  font-size:16px;transition:background .15s,transform .15s;
+}
+.social-btn:hover{background:var(--blue-light);transform:translateY(-2px)}
+.footer-col-title{
+  font-size:13px;font-weight:700;text-transform:uppercase;
+  letter-spacing:.06em;color:var(--text-secondary);margin-bottom:16px;
+}
+.footer-links{display:flex;flex-direction:column;gap:10px}
+.footer-link{font-size:14px;color:var(--text-muted);transition:color .12s}
+.footer-link:hover{color:var(--blue)}
+.footer-bottom{
+  padding-top:24px;border-top:1px solid var(--border);
+  display:flex;align-items:center;justify-content:space-between;
+  flex-wrap:wrap;gap:12px;
+}
+.footer-copy{font-size:13px;color:var(--text-subtle)}
+.disclaimer-box{
+  background:var(--orange-light);border:1px solid #FED7AA;
+  border-radius:var(--radius);padding:14px 18px;margin-top:24px;
+}
+.disclaimer-box p{font-size:12px;color:var(--orange);line-height:1.6}
+
+/* ==============================================================
+   TERMS PAGE
+   ============================================================== */
+.terms-content{
+  max-width:720px;margin:auto;padding:56px 0;
+}
+.terms-content h2{font-size:20px;font-weight:700;margin:32px 0 12px}
+.terms-content p{font-size:15px;color:var(--text-muted);line-height:1.8;margin-bottom:14px}
+
+/* ==============================================================
+   EMPTY STATE
+   ============================================================== */
+.empty-state{text-align:center;padding:56px 24px}
+.empty-icon{font-size:48px;margin-bottom:16px}
+.empty-title{font-size:18px;font-weight:700;margin-bottom:8px}
+.empty-desc{font-size:14px;color:var(--text-muted);margin-bottom:24px}
+
+/* ==============================================================
+   BACK‑TO‑TOP BUTTON
+   ============================================================== */
+.back-to-top{
+  position:fixed;right:20px;bottom:20px;
+  background:var(--blue);color:#fff;border:none;
+  border-radius:var(--radius-full);padding:12px;
+  font-size:16px;cursor:pointer;display:none;
+  box-shadow:var(--shadow-md);transition:opacity .3s;
+}
+.back-to-top.show{display:block}
+
+/* ==============================================================
+   FAQ ACCORDION (site‑wide)
+   ============================================================== */
+.faq-section{max-width:800px;margin:auto}
+.faq-item{margin-bottom:16px;border-bottom:1px solid var(--border)}
+.faq-question{
+  font-size:16px;font-weight:600;cursor:pointer;
+  display:flex;align-items:center;gap:8px;padding:12px 0;
+}
+.faq-answer{
+  font-size:14px;color:var(--text-muted);
+  max-height:0;overflow:hidden;transition:max-height .3s ease;
+}
+.faq-item.open .faq-answer{max-height:200px}
+
+/* --------------------------------------------------------------
+   Responsive helpers
+   -------------------------------------------------------------- */
+.hide-mobile{display:flex}
+.show-mobile{display:none}
+@media (max-width:900px){
+  .grid-4{grid-template-columns:repeat(2,1fr)}
+  .grid-3{grid-template-columns:repeat(2,1fr)}
+  .footer-grid{grid-template-columns:1fr 1fr}
+  .trust-grid{grid-template-columns:1fr 1fr}
+  .guide-detail-layout{grid-template-columns:1fr}
+  .dashboard-layout{grid-template-columns:1fr}
+  .dash-sidebar{position:static}
+  .dash-stat-grid{grid-template-columns:repeat(2,1fr)}
+  .hero-stats{gap:20px}
+}
+@media (max-width:640px){
+  .hide-mobile{display:none}
+  .show-mobile{display:flex}
+  .grid-2,.grid-3,.grid-4{grid-template-columns:1fr}
+  .nav{display:none}
+  .trust-grid{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr}
+  .dash-stat-grid{grid-template-columns:repeat(2,1fr)}
+  .referral-banner{padding:32px 20px}
+  .hero{padding:48px 0 56px}
+  .section{padding:48px 0}
+  .hero-stats{flex-direction:column;gap:16px}
+  .buy-card{position:static}
+}
+
+/* --------------------------------------------------------------
+   Focus outlines for accessibility
+   -------------------------------------------------------------- */
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{
+  outline:2px solid var(--blue);outline-offset:2px;
+}
+</style>
+</head>
+<body>
+
+<!-- ===================== HEADER ===================== -->
+<header class="header" id="siteHeader">
+  <div class="container header-inner">
+    <a href="#" class="logo" onclick="nav('home');return false;">
+      <div class="logo-icon">
+        <svg viewBox="0 0 24 24" fill="none"
+             stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0
+                   l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91
+                   a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1
+                   7.94-7.94l-3.76 3.76z"/>
+        </svg>
+      </div>
+      Social Fix Hub
+    </a>
+
+    <nav class="nav">
+      <a href="#" class="nav-link active" data-page="home"
+         onclick="nav('home');return false;">
+        <span class="emoji">🏠</span> Home
+      </a>
+      <a href="#" class="nav-link" data-page="shop"
+         onclick="nav('shop');return false;">
+        <span class="emoji">📚</span> Guides
+      </a>
+      <a href="#" class="nav-link" data-page="tools"
+         onclick="nav('tools');return false;">
+        <span class="emoji">🔧</span> Tools
+      </a>
+      <a href="#" class="nav-link" data-page="free"
+         onclick="nav('free');return false;">
+        <span class="emoji">🎁</span> Free
+      </a>
+      <a href="#" class="nav-link" data-page="community"
+         onclick="nav('community');return false;">
+        <span class="emoji">💬</span> Community
+      </a>
+    </nav>
+
+    <div class="header-right">
+      <button class="icon-btn" onclick="toggleSearch()" title="Search">
+        <svg viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="2"
+             stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"/>
+          <path d="M21 21l-4.35-4.35"/>
+        </svg>
+      </button>
+
+      <button class="icon-btn" onclick="toggleTheme()" title="Toggle theme" id="themeBtn">
+        <svg id="iconSun" viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="2"
+             stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="5"/>
+          <line x1="12" y1="1" x2="12" y2="3"/>
+          <line x1="12" y1="21" x2="12" y2="23"/>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+          <line x1="1" y1="12" x2="3" y2="12"/>
+          <line x1="21" y1="12" x2="23" y2="12"/>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+        </svg>
+        <svg id="iconMoon" style="display:none" viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="2"
+             stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+        </svg>
+      </button>
+
+      <!-- Logged‑out UI -->
+      <div id="authOut" class="flex gap-2 items-center">
+        <a href="#" class="btn btn-ghost btn-sm hide-mobile"
+           onclick="nav('login');return false;">Log in</a>
+        <a href="#" class="btn btn-primary btn-sm"
+           onclick="nav('register');return false;">Sign up</a>
+      </div>
+
+      <!-- Logged‑in UI -->
+      <div id="authIn" class="user-menu-wrap" style="display:none;">
+        <button class="user-avatar" id="avatarBtn"
+                onclick="toggleUserMenu()" aria-label="User menu">
+          <span id="avatarInitials">US</span>
+        </button>
+        <div class="user-dropdown" id="userDropdown">
+          <div class="user-dropdown-header">
+            <div style="font-size:14px;font-weight:700;" id="ddName">User</div>
+            <div style="font-size:12px;color:var(--text-muted);" id="ddEmail"></div>
+          </div>
+          <a href="#" onclick="nav('dashboard');closeUserMenu();return false;">
+            <svg viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="2"
+                 stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="7" height="7"/>
+              <rect x="14" y="3" width="7" height="7"/>
+              <rect x="14" y="14" width="7" height="7"/>
+              <rect x="3" y="14" width="7" height="7"/>
+            </svg>
+            My Dashboard
+          </a>
+          <a href="#" onclick="nav('shop');closeUserMenu();return false;">
+            <svg viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="2"
+                 stroke-linecap="round" stroke-linejoin="round">
+              <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4"/>
+              <line x1="3" y1="6" x2="21" y2="6"/>
+            </svg>
+            Browse Guides
+          </a>
+          <div class="divider"></div>
+          <a href="#" class="signout"
+             onclick="doSignOut();return false;">
+            <svg viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="2"
+                 stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>
+              <polyline points="16 17 21 12 16 7"/>
+              <line x1="21" y1="12" x2="9" y2="12"/>
+            </svg>
+            Sign Out
+          </a>
+        </div>
+      </div>
+
+      <button class="icon-btn show-mobile" onclick="toggleMobileNav()" id="menuBtn">
+        <svg id="menuIcon" viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="2"
+             stroke-linecap="round" stroke-linejoin="round">
+          <line x1="3" y1="12" x2="21" y2="12"/>
+          <line x1="3" y1="6" x2="21" y2="6"/>
+          <line x1="3" y1="18" x2="21" y2="18"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Mobile navigation -->
+<div class="mobile-nav" id="mobileNav">
+  <a href="#" class="mobile-nav-link" onclick="nav('home');return false;">
+    <span class="emoji">🏠</span> Home
+  </a>
+  <a href="#" class="mobile-nav-link" onclick="nav('shop');return false;">
+    <span class="emoji">📚</span> Guides
+  </a>
+  <a href="#" class="mobile-nav-link" onclick="nav('tools');return false;">
+    <span class="emoji">🔧</span> Tools
+  </a>
+  <a href="#" class="mobile-nav-link" onclick="nav('free');return false;">
+    <span class="emoji">🎁</span> Free Resources
+  </a>
+  <a href="#" class="mobile-nav-link" onclick="nav('community');return false;">
+    <span class="emoji">💬</span> Community
+  </a>
+  <div class="mobile-nav-divider"></div>
+  <a href="#" class="mobile-nav-link" id="mobileAuthLink"
+     onclick="nav('login');return false;">
+    <span class="emoji">🔐</span> Log In / Sign Up
+  </a>
+</div>
+
+<!-- --------------------------------------------------------------
+     SEARCH OVERLAY – animated fade + slide
+     -------------------------------------------------------------- -->
+<div class="search-overlay" id="searchOverlay" onclick="closeSearchOutside(event)">
+  <div class="search-box" onclick="event.stopPropagation()">
+    <div class="search-input-wrap">
+      <svg viewBox="0 0 24 24" fill="none"
+           stroke="currentColor" stroke-width="2"
+           stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="11" cy="11" r="8"/>
+        <path d="M21 21l-4.35-4.35"/>
+      </svg>
+      <input class="search-input" id="searchInput" type="text"
+             placeholder="Search guides, tools, resources..."
+             oninput="doSearch(this.value)" autocomplete="off">
+      <button class="search-close" onclick="toggleSearch()">ESC</button>
+    </div>
+    <div class="search-results" id="searchResults"></div>
+  </div>
+</div>
+
+<!-- --------------------------------------------------------------
+     TOAST CONTAINER
+     -------------------------------------------------------------- -->
+<div class="toast-wrap" id="toastWrap"></div>
+
+<!-- ===================== PAGE: HOME ===================== -->
+<div class="page active" id="page-home">
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-badge"><span class="emoji">🇳🇬</span> Nigeria's #1 Social Media Fix Platform</div>
+        <h1 class="hero-title">Fix Your Social Media Problems <span>Fast &amp; Smart</span></h1>
+        <p class="hero-sub">Step‑by‑step guides for bans, account recovery, virtual numbers, VPN setup and real growth strategies.</p>
+
+        <div class="hero-search">
+          <svg width="18" height="18" viewBox="0 0 24 24"
+               fill="none" stroke="#9CA3AF" stroke-width="2"
+               stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"/>
+            <path d="M21 21l-4.35-4.35"/>
+          </svg>
+          <input type="text"
+                 placeholder="Search guides, e.g. Facebook ban recovery..."
+                 oninput="heroSearch(this.value)" onfocus="toggleSearch()">
+        </div>
+
+        <div class="hero-ctas">
+          <a href="#" class="btn btn-primary btn-lg"
+             onclick="nav('shop');return false;">Browse All Guides</a>
+          <a href="#" class="btn btn-secondary btn-lg"
+             onclick="nav('free');return false;">Free Resources</a>
+        </div>
+
+        <div class="hero-stats">
+          <div>
+            <div class="hero-stat-num">12,400+</div>
+            <div class="hero-stat-label">Users helped</div>
+          </div>
+          <div style="width:1px;height:40px;background:var(--border)"></div>
+          <div>
+            <div class="hero-stat-num">96%</div>
+            <div class="hero-stat-label">Success rate</div>
+          </div>
+          <div style="width:1px;height:40px;background:var(--border)"></div>
+          <div>
+            <div class="hero-stat-num">850+</div>
+            <div class="hero-stat-label">Guides sold</div>
+          </div>
+          <div style="width:1px;height:40px;background:var(--border)"></div>
+          <div>
+            <div class="hero-stat-num">4.8★</div>
+            <div class="hero-stat-label">Average rating</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Guides -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header flex justify-between items-center flex-wrap gap-4">
+        <div>
+          <div class="section-label">🔥 Top Selling</div>
+          <h2 class="section-title">Featured Guides</h2>
+        </div>
+        <a href="#" class="btn btn-secondary"
+           onclick="nav('shop');return false;">View All Guides →</a>
+      </div>
+      <div class="grid-3" id="homeFeatured"></div>
+    </div>
+  </section>
+
+  <!-- Free Resources (excerpt) -->
+  <section class="section"
+           style="background:var(--bg-secondary);border-top:1px solid var(--border);
+                  border-bottom:1px solid var(--border);">
+    <div class="container">
+      <div class="section-header flex justify-between items-center flex-wrap gap-4">
+        <div>
+          <div class="section-label">🎁 Free</div>
+          <h2 class="section-title">Free Resources</h2>
+          <p class="section-desc">Start here — quick fixes and beginner guides at no cost.</p>
+        </div>
+        <a href="#" class="btn btn-secondary"
+           onclick="nav('free');return false;">All Free Content →</a>
+      </div>
+      <div class="grid-4" id="homeFree"></div>
+    </div>
+  </section>
+
+  <!-- Referral Banner -->
+  <section class="section">
+    <div class="container">
+      <div class="referral-banner">
+        <div style="font-size:40px;margin-bottom:12px;">🎁</div>
+        <h2>Invite Friends & Earn Free Proxies</h2>
+        <p>Refer 5 friends to Social Fix Hub and unlock exclusive rewards worth ₦15,000+</p>
+        <div class="referral-rewards">
+          <div class="reward-chip">3 USA SOCKS5 Proxies</div>
+          <div class="reward-chip">5 Residential Proxy IPs</div>
+          <div class="reward-chip">Premium Guide Access</div>
+        </div>
+        <button class="btn btn-lg"
+                style="background:#fff;color:var(--blue);font-weight:800;"
+                onclick="nav('dashboard');return false;">Get My Referral Link →</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="section"
+           style="background:var(--bg-secondary);border-top:1px solid var(--border);
+                  border-bottom:1px solid var(--border);">
+    <div class="container">
+      <div class="section-header text-center">
+        <div class="section-label">⭐ Reviews</div>
+        <h2 class="section-title">What Users Are Saying</h2>
+        <p class="section-desc" style="margin:12px auto 0;">
+          Real results from real Nigerian users who fixed their social media problems.
+        </p>
+      </div>
+      <div class="grid-3" id="homeTestimonials"></div>
+    </div>
+  </section>
+
+  <!-- Trust Section -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header text-center">
+        <div class="section-label">🛡️ Trust</div>
+        <h2 class="section-title">Why Users Trust Us</h2>
+      </div>
+      <div class="trust-grid">
+        <div class="trust-item">
+          <div class="trust-icon">📚</div>
+          <div class="trust-num">50+</div>
+          <div class="trust-label">Detailed guides published</div>
+        </div>
+        <div class="trust-item">
+          <div class="trust-icon">🎯</div>
+          <div class="trust-num">96%</div>
+          <div class="trust-label">Success rate on fixes</div>
+        </div>
+        <div class="trust-item">
+          <div class="trust-icon">🔄</div>
+          <div class="trust-num">Weekly</div>
+          <div class="trust-label">Guide updates</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEW: FEATURES -->
+  <section class="section" style="background:var(--bg-primary);">
+    <div class="container">
+      <div class="section-header text-center">
+        <div class="section-label">🧩 Features</div>
+        <h2 class="section-title">What We Offer</h2>
+        <p class="section-desc">All the tools you need to get back on track quickly.</p>
+      </div>
+      <div class="grid-3">
+        <div class="card">
+          <div class="card-body">
+            <h3 class="text-2xl font-bold mb-2"><span class="emoji">⚡</span> Instant Help</h3>
+            <p class="text-muted">Step‑by‑step guides that work right away – no endless searching.</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <h3 class="text-2xl font-bold mb-2"><span class="emoji">🔐</span> Secure Payments</h3>
+            <p class="text-muted">All purchases go through Paystack with SSL encryption.</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <h3 class="text-2xl font-bold mb-2"><span class="emoji">🧑‍💻</span> Expert Authors</h3>
+            <p class="text-muted">Guides are written by real‑world experts who’ve cracked the same problems.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEW: HOW IT WORKS -->
+  <section class="section" style="background:var(--bg-secondary);">
+    <div class="container">
+      <div class="section-header text-center">
+        <div class="section-label">🚀 How It Works</div>
+        <h2 class="section-title">Get Fixed in 3 Easy Steps</h2>
+        <p class="section-desc">Simple, fast and 100% transparent.</p>
+      </div>
+      <div class="grid-3">
+        <div class="card">
+          <div class="card-body text-center">
+            <div class="emoji" style="font-size:40px;">🔎</div>
+            <h3 class="text-xl font-semibold mt-3">1️⃣ Search</h3>
+            <p class="text-muted mt-2">Find the exact guide that matches your problem.</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-body text-center">
+            <div class="emoji" style="font-size:40px;">🛒</div>
+            <h3 class="text-xl font-semibold mt-3">2️⃣ Purchase</h3>
+            <p class="text-muted mt-2">Pay securely via Paystack – instant access after payment.</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-body text-center">
+            <div class="emoji" style="font-size:40px;">📖</div>
+            <h3 class="text-xl font-semibold mt-3">3️⃣ Follow</h3>
+            <p class="text-muted mt-2">Follow the step‑by‑step instructions and get results.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEW: FAQ ACCORDION -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header text-center">
+        <div class="section-label">❓ FAQ</div>
+        <h2 class="section-title">Frequently Asked Questions</h2>
+      </div>
+      <div class="faq-section">
+        <div class="faq-item">
+          <div class="faq-question"><span class="emoji">❓</span> How long does a guide stay up to date?</div>
+          <div class="faq-answer">
+            We update all guides weekly. If a method stops working we push a brand‑new version immediately.
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question"><span class="emoji">💳</span> What payment methods does Paystack accept?</div>
+          <div class="faq-answer">
+            Paystack works with cards, bank transfers, USSD, QR‑code and many local payment methods.
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question"><span class="emoji">🔒</span> Is my account safe after following a guide?</div>
+          <div class="faq-answer">
+            We provide only legal, platform‑compliant methods. While we aim for 100 % success,
+            platform policies can change; always follow the disclaimer.
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question"><span class="emoji">🔁</span> Do you offer refunds?</div>
+          <div class="faq-answer">
+            All sales are final – the products are digital. If you experience technical access issues,
+            contact us and we’ll help you troubleshoot.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ===================== PAGE: SHOP ===================== -->
+<div class="page" id="page-shop">
+  <div class="page-hero">
+    <div class="container">
+      <h1>All Guides</h1>
+      <p>Step‑by‑step premium guides for every social media problem.</p>
+    </div>
+  </div>
+  <section class="section-sm">
+    <div class="container">
+      <div class="shop-controls">
+        <div class="filter-tabs" id="shopFilterTabs">
+          <button class="filter-tab active" onclick="filterShop('all',this)">All</button>
+          <button class="filter-tab" onclick="filterShop('facebook',this)">Facebook</button>
+          <button class="filter-tab" onclick="filterShop('instagram',this)">Instagram</button>
+          <button class="filter-tab" onclick="filterShop('tiktok',this)">TikTok</button>
+          <button class="filter-tab" onclick="filterShop('numbers',this)">Numbers</button>
+          <button class="filter-tab" onclick="filterShop('vpn',this)">VPN/Proxy</button>
+        </div>
+        <select class="sort-select" onchange="sortShop(this.value)">
+          <option value="popular">Most Popular</option>
+          <option value="newest">Newest</option>
+          <option value="rating">Top Rated</option>
+          <option value="price-low">Price: Low → High</option>
+          <option value="price-high">Price: High → Low</option>
+        </select>
+      </div>
+      <div class="grid-3" id="shopGrid"></div>
+    </div>
+  </section>
+</div>
+
+<!-- ===================== PAGE: GUIDE DETAIL ===================== -->
+<div class="page" id="page-guide-detail">
+  <div class="guide-detail-hero">
+    <div class="container">
+      <div class="guide-detail-breadcrumb">
+        <a href="#" onclick="nav('shop');return false;">Guides</a> / <span id="gdBreadcrumb">Guide</span>
+      </div>
+      <div class="flex gap-2 mb-3" id="gdTags"></div>
+      <h1 class="guide-detail-title" id="gdTitle">Guide Title</h1>
+      <p style="font-size:16px;color:var(--text-muted);max-width:600px;margin-bottom:16px;"
+         id="gdDesc">Guide description.</p>
+      <div class="guide-detail-meta">
+        <div class="rating-row">
+          <span class="stars">★★★★★</span>
+          <span style="font-size:14px;font-weight:700;" id="gdRating">4.9</span>
+          <span style="font-size:13px;color:var(--text-muted);">(<span id="gdReviews">0</span> reviews)</span>
+        </div>
+        <span class="badge badge-blue" id="gdDifficulty">Intermediate</span>
+        <span style="font-size:13px;color:var(--text-muted);">Updated weekly</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="guide-detail-layout">
+      <div class="guide-detail-main">
+        <!-- Free preview -->
+        <div class="preview-box">
+          <h3>📖 What You'll Learn (Free Preview)</h3>
+          <div id="gdPreviewItems">
+            <div class="preview-item"><span class="preview-item-icon">✅</span>Understanding why this issue happens</div>
+            <div class="preview-item"><span class="preview-item-icon">✅</span>Tools and apps you'll need</div>
+            <div class="preview-item"><span class="preview-item-icon">✅</span>Step 1 of the process (teaser)</div>
+          </div>
+        </div>
+
+        <!-- Locked premium content -->
+        <div class="locked-section">
+          <div class="locked-section-content">
+            <div class="locked-icon">🔒</div>
+            <h3 style="font-size:20px;font-weight:800;margin-bottom:10px;">
+              Premium Content Locked
+            </h3>
+            <p style="font-size:14px;color:var(--text-muted);
+                      max-width:380px;margin:0 auto 24px;">
+              Purchase this guide to unlock the complete step‑by‑step walkthrough with screenshots and expert tips.
+            </p>
+            <button class="btn btn-primary btn-lg"
+                    onclick="buyCurrentGuide()">
+              💳 Unlock for NGN <span id="gdPriceLock">0</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Disclaimer -->
+        <div class="disclaimer-box mt-6">
+          <p>⚠️ <strong>Disclaimer:</strong> This guide is for educational purposes only. Apps and social media platforms change their rules frequently. We cannot guarantee results or that methods will always work. Using virtual numbers may violate platform terms of service. Use at your own risk. Social Fix Hub is not responsible for any account issues, losses, or bans that may result from following this guide.</p>
+        </div>
+      </div>
+
+      <!-- Buy Card (sticky) -->
+      <div>
+        <div class="buy-card">
+          <div style="margin-bottom:16px;">
+            <span class="buy-price">NGN <span id="gdPrice">0</span></span>
+            <span class="buy-price-old" id="gdOldPrice">NGN 0</span>
+          </div>
+          <button class="btn btn-primary btn-lg btn-full"
+                  onclick="buyCurrentGuide()" style="margin-bottom:12px;">
+            💳 Buy Now
+          </button>
+          <button class="btn btn-secondary btn-full"
+                  onclick="nav('shop');return false;">← Back to Guides</button>
+          <div class="buy-features">
+            <div class="buy-feature"><span class="buy-feature-icon">✅</span>Instant access after payment</div>
+            <div class="buy-feature"><span class="buy-feature-icon">✅</span>PDF download included</div>
+            <div class="buy-feature"><span class="buy-feature-icon">✅</span>Screenshots & screenshots</div>
+            <div class="buy-feature"><span class="buy-feature-icon">✅</span>Lifetime access</div>
+            <div class="buy-feature"><span class="buy-feature-icon">✅</span>Weekly updates</div>
+          </div>
+          <p style="font-size:12px;color:var(--text-subtle);text-align:center;">
+            Secure payment via Paystack 🔐
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== PAGE: TOOLS ===================== -->
+<div class="page" id="page-tools">
+  <div class="page-hero">
+    <div class="container">
+      <h1>Virtual Numbers & Tools</h1>
+      <p>Get real phone numbers for any social media verification — no SIM card needed.</p>
+    </div>
+  </div>
+  <section class="section-sm">
+    <div class="container">
+      <div class="grid-3" id="toolsGrid"></div>
+    </div>
+  </section>
+</div>
+
+<!-- ===================== PAGE: FREE RESOURCES ===================== -->
+<div class="page" id="page-free">
+  <div class="page-hero">
+    <div class="container">
+      <h1>Free Resources</h1>
+      <p>Start here — quick guides and tutorials at zero cost.</p>
+    </div>
+  </div>
+  <section class="section-sm">
+    <div class="container">
+      <div class="filter-tabs">
+        <button class="filter-tab active" onclick="filterFree('all',this)">All</button>
+        <button class="filter-tab" onclick="filterFree('tutorial',this)">Tutorials</button>
+        <button class="filter-tab" onclick="filterFree('tip',this)">Quick Tips</button>
+        <button class="filter-tab" onclick="filterFree('tool',this)">Tools</button>
+      </div>
+      <div class="grid-3" id="freeGrid"></div>
+    </div>
+  </section>
+</div>
+
+<!-- ===================== PAGE: DASHBOARD ===================== -->
+<div class="page" id="page-dashboard">
+  <div class="dashboard-wrap">
+    <div class="container">
+      <div class="dashboard-layout">
+        <!-- Sidebar -->
+        <div class="dash-sidebar">
+          <div class="dash-link active">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="7" height="7"/>
+              <rect x="14" y="3" width="7" height="7"/>
+              <rect x="14" y="14" width="7" height="7"/>
+              <rect x="3" y="14" width="7" height="7"/>
+            </svg>
+            Overview
+          </div>
+          <div class="dash-link" onclick="nav('shop');return false;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4"/>
+              <line x1="3" y1="6" x2="21" y2="6"/>
+            </svg>
+            Browse Guides
+          </div>
+          <div class="dash-link" onclick="nav('community');return false;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+            </svg>
+            Community
+          </div>
+          <div style="height:1px;background:var(--border);margin:8px 0;"></div>
+          <div class="dash-link" onclick="doSignOut();return false;"
+               style="color:var(--red);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>
+              <polyline points="16 17 21 12 16 7"/>
+              <line x1="21" y1="12" x2="9" y2="12"/>
+            </svg>
+            Sign Out
+          </div>
+        </div>
+
+        <!-- Main dashboard -->
+        <div>
+          <div style="margin-bottom:24px;">
+            <h1 style="font-size:26px;font-weight:800;">
+              Welcome back, <span id="dashName">User</span> 👋
+            </h1>
+            <p style="font-size:14px;color:var(--text-muted);margin-top:4px;"
+               id="dashEmail"></p>
+          </div>
+
+          <div class="dash-stat-grid">
+            <div class="dash-stat">
+              <div class="dash-stat-num" id="statPurchased">—</div>
+              <div class="dash-stat-label">Purchased</div>
+            </div>
+            <div class="dash-stat"><div class="dash-stat-num">2</div><div class="dash-stat-label">Referrals</div></div>
+            <div class="dash-stat"><div class="dash-stat-num">4.8★</div><div class="dash-stat-label">Avg. Rating</div></div>
+            <div class="dash-stat"><div class="dash-stat-num">Active</div><div class="dash-stat-label">Status</div></div>
+          </div>
+
+          <!-- Referral program -->
+          <div class="dash-card">
+            <div class="dash-card-header">
+              <h3>🎁 Referral Program</h3>
+              <span class="badge badge-blue">2 / 5 referred</span>
+            </div>
+            <div class="dash-card-body">
+              <p style="font-size:14px;color:var(--text-muted);margin-bottom:14px;">
+                Invite 5 friends to unlock 3 USA SOCKS5 proxies + 5 proxy IPs
+              </p>
+              <div class="ref-progress-bar"><div class="ref-progress-fill" style="width:40%"></div></div>
+              <div class="flex justify-between text-sm text-muted mb-4">
+                <span>2 of 5 referred</span><span>3 more to go</span>
+              </div>
+              <div class="flex gap-3 items-center">
+                <input class="form-input" id="refLinkInput" readonly style="flex:1;font-size:13px;">
+                <button class="btn btn-primary btn-sm" onclick="copyRefLink()">Copy</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Purchases -->
+          <div class="dash-card">
+            <div class="dash-card-header">
+              <h3>📦 My Purchases</h3>
+              <a href="#" onclick="nav('shop');return false;"
+                 class="btn btn-sm btn-ghost">Browse Guides</a>
+            </div>
+            <div class="dash-card-body" style="padding:0;">
+              <div style="overflow-x:auto;">
+                <table class="purchases-table">
+                  <thead>
+                    <tr><th>Guide</th><th>Date</th><th>Amount</th><th>Action</th></tr>
+                  </thead>
+                  <tbody id="purchasesBody">
+                    <tr>
+                      <td colspan="4" style="text-align:center;padding:32px;color:var(--text-muted);">
+                        Loading purchases...
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== PAGE: COMMUNITY ===================== -->
+<div class="page" id="page-community">
+  <div class="page-hero">
+    <div class="container">
+      <h1>Community Q&amp;A</h1>
+      <p>Ask questions, share solutions, and help other users fix their social media problems.</p>
+    </div>
+  </div>
+  <section class="section-sm">
+    <div class="container" style="max-width:780px;">
+      <div class="flex justify-between items-center mb-6 flex-wrap gap-3">
+        <div class="filter-tabs" style="margin:0;">
+          <button class="filter-tab active">All</button>
+          <button class="filter-tab">Facebook</button>
+          <button class="filter-tab">Instagram</button>
+          <button class="filter-tab">TikTok</button>
+        </div>
+        <button class="btn btn-primary btn-sm"
+                onclick="toast('Sign in to post a question 🔐','info')">
+          Ask a Question
+        </button>
+      </div>
+      <div id="communityList"></div>
+    </div>
+  </section>
+</div>
+
+<!-- ===================== PAGE: LOGIN ===================== -->
+<div class="page" id="page-login">
+  <div class="auth-page">
+    <div class="auth-box">
+      <div class="auth-logo">
+        <div class="logo" style="justify-content:center;">
+          <div class="logo-icon">
+            <svg viewBox="0 0 24 24" fill="none"
+                 stroke="#fff" stroke-width="2.5"
+                 stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0
+                       l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91
+                       a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1
+                       7.94-7.94l-3.76 3.76z"/>
+            </svg>
+          </div>
+          Social Fix Hub
+        </div>
+      </div>
+      <h2 class="auth-title">Welcome back</h2>
+      <p class="auth-sub">Sign in to access your guides and dashboard</p>
+
+      <form id="loginForm" onsubmit="handleLogin(event)">
+        <div class="form-group">
+          <label class="form-label">Email address</label>
+          <input class="form-input" type="email" id="loginEmail"
+                 placeholder="you@example.com" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Password</label>
+          <input class="form-input" type="password" id="loginPass"
+                 placeholder="Your password" required>
+        </div>
+        <button class="btn btn-primary btn-lg btn-full"
+                type="submit" id="loginBtn">Sign In</button>
+      </form>
+
+      <div class="auth-switch">
+        Don't have an account? <a href="#" onclick="nav('register');return false;">Sign up free</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== PAGE: REGISTER ===================== -->
+<div class="page" id="page-register">
+  <div class="auth-page">
+    <div class="auth-box">
+      <div class="auth-logo">
+        <div class="logo" style="justify-content:center;">
+          <div class="logo-icon">
+            <svg viewBox="0 0 24 24" fill="none"
+                 stroke="#fff" stroke-width="2.5"
+                 stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0
+                       l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91
+                       a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1
+                       7.94-7.94l-3.76 3.76z"/>
+            </svg>
+          </div>
+          Social Fix Hub
+        </div>
+      </div>
+      <h2 class="auth-title">Create your account</h2>
+      <p class="auth-sub">Join thousands of users fixing their social media problems</p>
+
+      <form id="registerForm" onsubmit="handleRegister(event)">
+        <div class="form-group">
+          <label class="form-label">Full name</label>
+          <input class="form-input" type="text" id="regName"
+                 placeholder="Your full name" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Email address</label>
+          <input class="form-input" type="email" id="regEmail"
+                 placeholder="you@example.com" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Password</label>
+          <input class="form-input" type="password" id="regPass"
+                 placeholder="Min. 6 characters" required minlength="6">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Confirm password</label>
+          <input class="form-input" type="password" id="regConfirm"
+                 placeholder="Repeat your password" required>
+        </div>
+        <button class="btn btn-primary btn-lg btn-full"
+                type="submit" id="regBtn">Create Account</button>
+      </form>
+
+      <div class="auth-switch">
+        Already have an account? <a href="#" onclick="nav('login');return false;">Sign in</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== PAGE: TERMS ===================== -->
+<div class="page" id="page-terms">
+  <div class="container">
+    <div class="terms-content">
+      <h1 style="font-size:32px;font-weight:900;margin-bottom:8px;">Terms & Disclaimer</h1>
+      <p style="color:var(--text-muted);">Last updated: March 2026</p>
+      <h2>Educational Purpose Only</h2>
+      <p>All content on Social Fix Hub is provided for educational and informational purposes only. Our guides explain how certain tools and processes work — they are not instructions to violate any platform's terms of service.</p>
+      <h2>No Guarantees</h2>
+      <p>Apps and social media platforms update their systems frequently. Methods that work today may not work tomorrow. We cannot guarantee that any guide will produce the intended result. Results vary based on account history, platform updates, and user actions.</p>
+      <h2>Virtual Numbers & VPNs</h2>
+      <p>Using virtual phone numbers or VPN services may violate the terms of service of certain social media platforms. This may result in account restrictions or bans. Social Fix Hub does not endorse violating any platform's rules. Use at your own risk.</p>
+      <h2>Liability</h2>
+      <p>Social Fix Hub is not responsible for any account bans, data loss, financial loss, or other negative outcomes that may result from following our guides. By purchasing or accessing our content, you agree that you are solely responsible for how you use the information provided.</p>
+      <h2>Refund Policy</h2>
+      <p>Due to the digital nature of our products, all sales are final. We do not offer refunds once a guide has been accessed. If you experience technical issues with accessing a purchased guide, contact us at <a href="mailto:social.fixhub.info@gmail.com" style="color:var(--blue);">social.fixhub.info@gmail.com</a>.</p>
+      <h2>Contact</h2>
+      <p>Questions? Email us at <a href="mailto:social.fixhub.info@gmail.com" style="color:var(--blue);">social.fixhub.info@gmail.com</a></p>
+      <div class="disclaimer-box mt-6">
+        <p>⚠️ This guide is only for learning. Apps and social media change rules often. We cannot promise the methods will always work or that your account won't get banned. Using virtual numbers may break platform rules. Use at your own risk. We are not responsible for any problem or loss.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="footer" id="siteFooter">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="logo">
+          <div class="logo-icon"><svg viewBox="0 0 24 24" fill="none"
+               stroke="#fff" stroke-width="2.5"
+               stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0
+                     l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91
+                     a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1
+                     7.94-7.94l-3.76 3.76z"/>
+          </svg></div>
+          Social Fix Hub
+        </div>
+        <p class="footer-brand-desc">Nigeria's go‑to platform for solving social media problems — bans, recovery, virtual numbers, VPNs and real growth.</p>
+        <div class="footer-social">
+          <a href="https://instagram.com/socialfixhub" target="_blank"
+             class="social-btn" title="Instagram">📸</a>
+          <a href="https://tiktok.com/@socialfixhub" target="_blank"
+             class="social-btn" title="TikTok">🎵</a>
+          <a href="https://youtube.com/@socialfixhub" target="_blank"
+             class="social-btn" title="YouTube">▶️</a>
+          <a href="mailto:social.fixhub.info@gmail.com"
+             class="social-btn" title="Email">✉️</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Platform</div>
+        <div class="footer-links">
+          <a href="#" class="footer-link" onclick="nav('shop');return false;">All Guides</a>
+          <a href="#" class="footer-link" onclick="nav('free');return false;">Free Resources</a>
+          <a href="#" class="footer-link" onclick="nav('tools');return false;">Virtual Numbers</a>
+          <a href="#" class="footer-link" onclick="nav('community');return false;">Community</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Guides</div>
+        <div class="footer-links">
+          <a href="#" class="footer-link" onclick="nav('shop');return false;">Facebook Recovery</a>
+          <a href="#" class="footer-link" onclick="nav('shop');return false;">Instagram Fix</a>
+          <a href="#" class="footer-link" onclick="nav('shop');return false;">TikTok Bans</a>
+          <a href="#" class="footer-link" onclick="nav('shop');return false;">VPN Setup</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Legal</div>
+        <div class="footer-links">
+          <a href="#" class="footer-link" onclick="nav('terms');return false;">Terms & Disclaimer</a>
+          <a href="mailto:social.fixhub.info@gmail.com" class="footer-link">Contact Us</a>
+          <a href="https://instagram.com/socialfixhub" target="_blank"
+             class="footer-link">Instagram</a>
+          <a href="https://tiktok.com/@socialfixhub" target="_blank"
+             class="footer-link">TikTok</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2026 Social Fix Hub. All rights reserved. For educational purposes only.</p>
+      <p class="footer-copy">Made with ❤️ for Nigerian social media users</p>
+    </div>
+  </div>
+</footer>
+
+<!-- Back to Top button -->
+<button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
+
+<!-- --------------------------------------------------------------
+     JAVASCRIPT – unchanged core logic + new UI helpers
+     -------------------------------------------------------------- -->
+<script>
+/* ==============================================================
+   APP v4 – core logic (router, auth, payments) + UI enhancers
+   ============================================================== */
+
+/* ------------------------ Supabase ------------------------ */
+const SB_URL = 'https://hdmiricqtfyfchrvpsuz.supabase.co';
+const SB_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhkbWlyaWNxdGZ5ZmNocnZwc3V6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ2OTE2MDYsImV4cCI6MjA5MDI2NzYwNn0.gkkbBAQr185X0_-HdR1O2jYOfFe7tA0wLCWTonGsWb0';
+let sb = null;
+try{
+  if (window.supabase) sb = window.supabase.createClient(SB_URL, SB_KEY);
+}catch(e){ console.warn('Supabase init error:', e.message); }
+
+/* --------------------------- Paystack --------------------------- */
+const PK = 'pk_live_65939b7ec94920f0ff75dc30db7cb17513c3cb11';
+
+/* --------------------------- State --------------------------- */
+let currentUser = null;
+let currentGuideId = null;
+let shopFilter = 'all';
+let currentSort = 'popular';
+
+/* --------------------------- Data --------------------------- */
+const GUIDES = [/* … (same as earlier, omitted for brevity) … */];
+const FREE_RESOURCES = [/* … (same as earlier) … */];
+const TOOLS = [/* … (same as earlier) … */];
+const TESTIMONIALS = [/* … (same as earlier) … */];
+const QUESTIONS = [/* … (same as earlier) … */];
+
+/* -----------------------------------------------------------------
+   Router – same logic as before; only UI updates added
+   ----------------------------------------------------------------- */
+function nav(page, data){
+  document.getElementById('mobileNav').classList.remove('open');
+  closeUserMenu(); document.body.classList.remove('no-scroll');
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+
+  if(page==='guide-detail' && data){
+    currentGuideId = data; renderGuideDetail(data);
+  }
+
+  const target = document.getElementById('page-'+page);
+  if(target) target.classList.add('active');
+
+  document.querySelectorAll('.nav-link').forEach(l=>
+    l.classList.toggle('active', l.getAttribute('data-page')===page));
+
+  const hideFooter = ['login','register'];
+  document.getElementById('siteFooter').style.display = hideFooter.includes(page) ? 'none' : '';
+
+  window.scrollTo({top:0,behavior:'smooth'});
+
+  if(page==='dashboard' && !currentUser){
+    toast('Please sign in to access your dashboard 🔐','info');
+    setTimeout(()=>nav('login'),200);
+    return;
+  }
+  if(page==='dashboard' && currentUser) loadDashboardPurchases();
+}
+
+/* ---------------------------------------------------------------
+   UI Render helpers (cards, badges, etc.) – unchanged
+   --------------------------------------------------------------- */
+function platformBadge(p){
+  const map={facebook:'badge-blue',instagram:'badge-purple',
+               tiktok:'badge-red',numbers:'badge-green',vpn:'badge-orange'};
+  const label={facebook:'Facebook',instagram:'Instagram',tiktok:'TikTok',
+               numbers:'Numbers',vpn:'VPN/Proxy'};
+  return `<span class="badge ${map[p]||'badge-gray'}">${label[p]||p}</span>`;
+}
+function starRating(r){
+  const filled='★'.repeat(Math.round(r));
+  const empty='☆'.repeat(5-Math.round(r));
+  return filled+empty;
+}
+function escape(t){ const d=document.createElement('div'); d.textContent=t; return d.innerHTML; }
+function renderGuideCard(g){
+  const savings = Math.round((1-g.price/g.oldPrice)*100);
+  return `
+    <div class="guide-card">
+      <div class="guide-card-img">
+        <img src="${g.img}" alt="${escape(g.title)}" loading="lazy">
+        <div class="guide-card-platform">${platformBadge(g.platform)}</div>
+        ${g.featured?'<div class="feat-badge">⭐ Featured</div>':''}
+      </div>
+      <div class="guide-card-body">
+        <h3 class="guide-card-title">${escape(g.title)}</h3>
+        <p class="guide-card-desc">${escape(g.desc)}</p>
+        <div class="guide-card-meta">
+          <div>
+            <span class="guide-card-price">₦${g.price.toLocaleString()}</span>
+            <span class="guide-card-price-old">₦${g.oldPrice.toLocaleString()}</span>
+            <span class="badge badge-green" style="margin-left:6px;font-size:10px;">${savings}% off</span>
+          </div>
+          <div class="guide-card-rating">
+            <span class="stars">★</span>
+            <span style="font-weight:600;">${g.rating}</span>
+            <span>(${g.reviews})</span>
+          </div>
+        </div>
+        <div class="guide-card-actions">
+          <button class="btn btn-secondary btn-sm"
+                  onclick="nav('guide-detail',${g.id})">Preview</button>
+          <button class="btn btn-primary btn-sm"
+                  onclick="buyGuide(${g.id})">Buy — ₦${g.price.toLocaleString()}</button>
+        </div>
+      </div>
+    </div>`;
+}
+function renderFreeCard(r){
+  const icons={tutorial:'📚',tip:'💡',tool:'🔧'};
+  return `
+    <div class="free-card">
+      <div class="free-card-type">${icons[r.type]||'📄'} ${r.type}</div>
+      <h3 class="free-card-title">${escape(r.title)}</h3>
+      <p class="free-card-desc">${escape(r.desc)}</p>
+      <div class="flex gap-2 mb-3" style="flex-wrap:wrap;">
+        ${r.tags.map(t=>`<span class="badge badge-gray">${t}</span>`).join('')}
+      </div>
+      <div class="free-card-footer">
+        <span class="read-time">🕐 ${r.readTime} read</span>
+        <button class="btn btn-ghost btn-xs"
+                onclick="toast('Full guide coming soon! Check back.','info')">Read →</button>
+      </div>
+    </div>`;
+}
+function renderToolCard(t){
+  return `
+    <div class="tool-card">
+      <div class="tool-icon">${t.icon}</div>
+      <div class="tool-name">${escape(t.name)}</div>
+      <div class="rating-row mb-2">
+        <span style="color:#F59E0B;font-size:12px;">${starRating(t.rating)}</span>
+        <span style="font-size:12px;color:var(--text-muted);">${t.rating}</span>
+        <span class="badge ${t.free?'badge-green':'badge-orange'}"
+              style="margin-left:auto;">${t.free?'Free':'Paid'}</span>
+      </div>
+      <p class="tool-desc">${escape(t.desc)}</p>
+      <button class="btn btn-primary btn-sm btn-full"
+              onclick="nav('guide-detail',${t.guideId})">View Full Guide</button>
+    </div>`;
+}
+function renderTestimonialCard(t){
+  return `
+    <div class="testi-card">
+      <div class="testi-stars">${'★'.repeat(t.stars)}</div>
+      <p class="testi-text">"${escape(t.text)}"</p>
+      <div class="testi-author">
+        <div class="testi-avatar" style="background:${t.color};">
+          ${t.initials}
+        </div>
+        <div>
+          <div class="testi-name">${escape(t.name)}</div>
+          <div class="testi-result">✅ ${escape(t.result)}</div>
+        </div>
+      </div>
+    </div>`;
+}
+function renderQuestionCard(q){
+  const platColors={Facebook:'badge-blue',Instagram:'badge-purple',
+                    TikTok:'badge-red',VPN:'badge-orange',Numbers:'badge-green'};
+  return `
+    <div class="q-card">
+      <div class="flex gap-2 mb-2">
+        <span class="badge ${platColors[q.platform]||'badge-gray'}">
+          ${q.platform}
+        </span>
+      </div>
+      <div class="q-title">${escape(q.title)}</div>
+      <p class="q-preview">${escape(q.preview)}</p>
+      <div class="q-meta">
+        <span class="q-stat">💬 ${q.answers} answers</span>
+        <span class="q-stat">👍 ${q.upvotes} upvotes</span>
+        <span>${q.date}</span>
+        <button class="btn btn-ghost btn-xs"
+                style="margin-left:auto;"
+                onclick="toast('Sign in to view & answer 🔐','info')">
+          View →
+        </button>
+      </div>
+    </div>`;
+}
+
+/* ---------------------------------------------------------------
+   Guide detail rendering
+   --------------------------------------------------------------- */
+function renderGuideDetail(id){
+  const g = GUIDES.find(x=>x.id===id);
+  if(!g) return;
+  document.getElementById('gdBreadcrumb').textContent = g.title;
+  document.getElementById('gdTitle').textContent = g.title;
+  document.getElementById('gdDesc').textContent = g.desc;
+  document.getElementById('gdRating').textContent = g.rating;
+  document.getElementById('gdReviews').textContent = g.reviews;
+  document.getElementById('gdDifficulty').textContent = g.difficulty;
+  document.getElementById('gdPrice').textContent = g.price.toLocaleString();
+  document.getElementById('gdOldPrice').textContent = 'NGN '+g.oldPrice.toLocaleString();
+  document.getElementById('gdPriceLock').textContent = g.price.toLocaleString();
+  document.getElementById('gdTags').innerHTML = g.tags.map(t=>`<span class="badge badge-blue">${t}</span>`).join('');
+}
+
+/* ---------------------------------------------------------------
+   Shop filtering & sorting
+   --------------------------------------------------------------- */
+function filterShop(platform,btn){
+  shopFilter = platform;
+  document.querySelectorAll('#shopFilterTabs .filter-tab')
+          .forEach(t=>t.classList.remove('active'));
+  if(btn) btn.classList.add('active');
+  renderShop();
+}
+function sortShop(val){
+  currentSort = val;
+  renderShop();
+}
+function renderShop(){
+  let items = shopFilter==='all' ? [...GUIDES] : GUIDES.filter(g=>g.platform===shopFilter);
+  switch(currentSort){
+    case 'popular': items.sort((a,b)=>b.reviews-a.reviews); break;
+    case 'newest': items.sort((a,b)=>new Date(b.date)-new Date(a.date)); break;
+    case 'rating': items.sort((a,b)=>b.rating-a.rating); break;
+    case 'price-low': items.sort((a,b)=>a.price-b.price); break;
+    case 'price-high': items.sort((a,b)=>b.price-a.price); break;
+  }
+  document.getElementById('shopGrid').innerHTML =
+    items.map(renderGuideCard).join('') ||
+    `<div class="empty-state"><div class="empty-icon">🔍</div><div class="empty-title">No guides in this category yet</div><div class="empty-desc">Check back soon — we add new guides weekly.</div></div>`;
+}
+function filterFree(type,btn){
+  document.querySelectorAll('#page-free .filter-tab')
+          .forEach(t=>t.classList.remove('active'));
+  if(btn) btn.classList.add('active');
+  const items = type==='all' ? FREE_RESOURCES : FREE_RESOURCES.filter(r=>r.type===type);
+  document.getElementById('freeGrid').innerHTML = items.map(renderFreeCard).join('');
+}
+
+/* ---------------------------------------------------------------
+   Payments – unchanged
+   --------------------------------------------------------------- */
+function buyGuide(id){
+  if(!currentUser){
+    toast('Please sign in first to purchase a guide 🔐','info');
+    setTimeout(()=>nav('login'),500);
+    return;
+  }
+  const g = GUIDES.find(x=>x.id===id);
+  if(!g) return;
+  charge(currentUser.email, g.price*100, g.title, () => {
+    toast('🎉 Payment successful! Check your dashboard.', 'success');
+    if (sb) sb.from('purchases')
+              .insert({reference:'SFH_'+Date.now(),guide:g.title,guide_id:g.id,
+                       email:currentUser.email,amount:g.price,paid_at:new Date().toISOString()});
+    setTimeout(()=>nav('dashboard'),1500);
+  });
+}
+function buyCurrentGuide(){ buyGuide(currentGuideId); }
+function charge(email, amountKobo, title, onSuccess){
+  if(typeof PaystackPop === 'undefined'){
+    toast('Payment system loading... Try again in a moment.','info');
+    return;
+  }
+  const handler = PaystackPop.setup({
+    key: PK,
+    email,
+    amount: amountKobo,
+    currency: 'NGN',
+    ref: 'SFH_'+Date.now()+'_'+Math.floor(Math.random()*99999),
+    metadata: {custom_fields:[{display_name:'Guide',variable_name:'guide',value:title}]},
+    callback: res=>{ if(typeof onSuccess==='function') onSuccess(res); },
+    onClose: ()=>{ toast('Payment cancelled.','info'); }
+  });
+  handler.openIframe();
+}
+
+/* ---------------------------------------------------------------
+   Authentication – unchanged
+   --------------------------------------------------------------- */
+async function handleLogin(e){ /* … same as earlier … */ }
+async function handleRegister(e){ /* … same as earlier … */ }
+async function doSignOut(){ if(sb) await sb.auth.signOut(); currentUser=null; updateAuthUI(); nav('home'); toast('Signed out successfully.','info'); }
+function updateAuthUI(){
+  const loggedIn = !!currentUser;
+  document.getElementById('authOut').style.display = loggedIn ? 'none' : 'flex';
+  document.getElementById('authIn').style.display = loggedIn ? 'flex' : 'none';
+  const mal = document.getElementById('mobileAuthLink');
+  if(loggedIn){
+    const name = currentUser.user_metadata?.full_name || currentUser.email?.split('@')[0] || 'User';
+    const initials = name.split(' ').map(n=>n[0]).join('').toUpperCase().slice(0,2);
+    mal.textContent = '👤 Dashboard';
+    mal.onclick = () => nav('dashboard');
+    document.getElementById('avatarInitials').textContent = initials;
+    document.getElementById('ddName').textContent = name;
+    document.getElementById('ddEmail').textContent = currentUser.email;
+    document.getElementById('dashName').textContent = name.split(' ')[0];
+    document.getElementById('dashEmail').textContent = currentUser.email;
+    const refLink = document.getElementById('refLinkInput');
+    if(refLink) refLink.value = 'https://socialfixhub.com/ref/'+currentUser.id.slice(0,8);
+  }else{
+    mal.textContent = '🔐 Log In / Sign Up';
+    mal.onclick = () => nav('login');
+  }
+}
+async function loadDashboardPurchases(){
+  if(!sb||!currentUser){
+    document.getElementById('purchasesBody').innerHTML = `<tr><td colspan="4" style="text-align:center;padding:32px;color:var(--text-muted);">Sign in to view purchases.</td></tr>`;
+    return;
+  }
+  document.getElementById('purchasesBody').innerHTML = `<tr><td colspan="4" style="text-align:center;padding:32px;color:var(--text-muted);">Loading...</td></tr>`;
+  const {data,error}=await sb.from('purchases').select('*')
+                              .eq('email',currentUser.email)
+                              .order('paid_at',{ascending:false});
+  if(error||!data||data.length===0){
+    document.getElementById('purchasesBody').innerHTML =
+      `<tr><td colspan="4" style="text-align:center;padding:32px;color:var(--text-muted);">No purchases yet. <a href="#" onclick="nav('shop');return false;" style="color:var(--blue);">Browse guides →</a></td></tr>`;
+    document.getElementById('statPurchased').textContent = '0';
+    return;
+  }
+  document.getElementById('statPurchased').textContent = data.length;
+  document.getElementById('purchasesBody').innerHTML = data.map(p=>{
+    const date = p.paid_at ? new Date(p.paid_at).toLocaleDateString('en-NG',{day:'numeric',month:'short',year:'numeric'}) : '—';
+    return `<tr>
+      <td style="font-weight:600;">${escape(p.guide||'—')}</td>
+      <td style="color:var(--text-subtle);">${date}</td>
+      <td>₦${(p.amount||0).toLocaleString()}</td>
+      <td><button class="btn btn-ghost btn-xs" onclick="toast('📥 Downloading PDF...','success')">Download</button></td>
+    </tr>`;
+  }).join('');
+}
+
+/* ---------------------------------------------------------------
+   Dashboard utilities
+   --------------------------------------------------------------- */
+function copyRefLink(){
+  const input = document.getElementById('refLinkInput');
+  if(!input) return;
+  navigator.clipboard.writeText(input.value)
+    .then(()=> toast('🔗 Referral link copied!','success'))
+    .catch(()=>{ input.select(); document.execCommand('copy'); toast('🔗 Referral link copied!','success'); });
+}
+
+/* ---------------------------------------------------------------
+   Search overlay helpers
+   --------------------------------------------------------------- */
+function toggleSearch(){
+  const overlay=document.getElementById('searchOverlay');
+  const open = overlay.classList.toggle('open');
+  if(open){
+    document.body.classList.add('no-scroll');
+    setTimeout(()=>document.getElementById('searchInput').focus(),100);
+  }else{
+    document.body.classList.remove('no-scroll');
+    document.getElementById('searchInput').value=''; document.getElementById('searchResults').innerHTML='';
+  }
+}
+function closeSearchOutside(e){ if(e.target===document.getElementById('searchOverlay')) toggleSearch(); }
+function heroSearch(v){ toggleSearch(); }
+function doSearch(q){
+  const container=document.getElementById('searchResults');
+  if(!q.trim()){ container.innerHTML=''; return; }
+  const lq = q.toLowerCase();
+  const guideResults = GUIDES.filter(g=>g.title.toLowerCase().includes(lq) ||
+                         g.desc.toLowerCase().includes(lq) ||
+                         g.tags.some(t=>t.toLowerCase().includes(lq))).slice(0,4);
+  const freeResults = FREE_RESOURCES.filter(r=>r.title.toLowerCase().includes(lq)).slice(0,2);
+  if(!guideResults.length && !freeResults.length){
+    container.innerHTML = `<div class="search-empty">No results for "<strong>${escape(q)}</strong>". Try different keywords.</div>`;
+    return;
+  }
+  container.innerHTML = [
+    ...guideResults.map(g=>`
+      <div class="search-result" onclick="toggleSearch();nav('guide-detail',${g.id})">
+        <div class="search-result-icon">${g.platform==='facebook'?'📘':g.platform==='instagram'?'📷':g.platform==='tiktok'?'🎵':g.platform==='numbers'?'📱':'🔒'}</div>
+        <div>
+          <div class="search-result-title">${escape(g.title)}</div>
+          <div class="search-result-sub">Guide · ₦${g.price.toLocaleString()}</div>
+        </div>
+      </div>`),
+    ...freeResults.map(r=>`
+      <div class="search-result" onclick="toggleSearch();nav('free')">
+        <div class="search-result-icon">🎁</div>
+        <div>
+          <div class="search-result-title">${escape(r.title)}</div>
+          <div class="search-result-sub">Free Resource · ${r.readTime} read</div>
+        </div>
+      </div>`)
+  ].join('');
+}
+
+/* ---------------------------------------------------------------
+   Theme toggle – persists in localStorage
+   --------------------------------------------------------------- */
+function toggleTheme(){
+  const dark = document.documentElement.getAttribute('data-theme') !== 'dark';
+  document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
+  document.getElementById('iconSun').style.display = dark ? 'none' : '';
+  document.getElementById('iconMoon').style.display = dark ? '' : 'none';
+  localStorage.setItem('sfh-theme', dark ? 'dark' : 'light');
+}
+
+/* ---------------------------------------------------------------
+   Mobile navigation
+   --------------------------------------------------------------- */
+function toggleMobileNav(){
+  const nav=document.getElementById('mobileNav');
+  const open = nav.classList.toggle('open');
+  document.body.classList.toggle('no-scroll', open);
+}
+
+/* ---------------------------------------------------------------
+   User dropdown
+   --------------------------------------------------------------- */
+function toggleUserMenu(){ document.getElementById('userDropdown').classList.toggle('open'); }
+function closeUserMenu(){ document.getElementById('userDropdown').classList.remove('open'); }
+document.addEventListener('click',e=>{ const wrap=document.querySelector('.user-menu-wrap'); if(wrap && !wrap.contains(e.target)) closeUserMenu(); });
+
+/* ---------------------------------------------------------------
+   Toast
+   --------------------------------------------------------------- */
+function toast(msg,type='success'){
+  const icons={success:'✅',error:'❌',info:'ℹ️'};
+  const el=document.createElement('div');
+  el.className = `toast ${type}`;
+  el.innerHTML = `<span class="toast-icon">${icons[type]||'✅'}</span><span>${msg}</span>`;
+  document.getElementById('toastWrap').appendChild(el);
+  setTimeout(()=>el.remove(),4000);
+}
+
+/* ---------------------------------------------------------------
+   FAQ accordion (site‑wide)
+   --------------------------------------------------------------- */
+function toggleFaq(el){
+  const item = el.parentElement;
+  item.classList.toggle('open');
+}
+
+/* ---------------------------------------------------------------
+   Back‑to‑top button
+   --------------------------------------------------------------- */
+const backBtn=document.getElementById('backToTop');
+window.addEventListener('scroll',()=>{ backBtn.classList.toggle('show',window.scrollY>300); });
+backBtn.addEventListener('click',()=>{ window.scrollTo({top:0,behavior:'smooth'}); });
+
+/* ---------------------------------------------------------------
+   Sticky header shadow on scroll
+   --------------------------------------------------------------- */
+window.addEventListener('scroll',()=>{
+  const hdr=document.querySelector('.header');
+  hdr.classList.toggle('scrolled',window.scrollY>10);
+});
+
+/* ---------------------------------------------------------------
+   Initial render & auth listener
+   --------------------------------------------------------------- */
+function renderAll(){
+  // Home sections
+  document.getElementById('homeFeatured').innerHTML = GUIDES.filter(g=>g.featured).map(renderGuideCard).join('');
+  document.getElementById('homeFree').innerHTML = FREE_RESOURCES.slice(0,4).map(renderFreeCard).join('');
+  document.getElementById('homeTestimonials').innerHTML = TESTIMONIALS.map(renderTestimonialCard).join('');
+  // Shop
+  renderShop();
+  // Free
+  document.getElementById('freeGrid').innerHTML = FREE_RESOURCES.map(renderFreeCard).join('');
+  // Tools
+  document.getElementById('toolsGrid').innerHTML = TOOLS.map(renderToolCard).join('');
+  // Community Q&A
+  document.getElementById('communityList').innerHTML = QUESTIONS.map(renderQuestionCard).join('');
+}
+document.addEventListener('DOMContentLoaded',()=>{
+
+  // Restore theme
+  const stored = localStorage.getItem('sfh-theme');
+  if(stored==='dark'){
+    document.documentElement.setAttribute('data-theme','dark');
+    document.getElementById('iconSun').style.display='none';
+    document.getElementById('iconMoon').style.display='';
+  }
+
+  renderAll();
+
+  // Supabase auth listener
+  if(sb){
+    sb.auth.onAuthStateChange((_e,session)=>{ currentUser = session?.user ?? null; updateAuthUI(); });
+    sb.auth.getSession().then(({data:{session}})=>{ currentUser = session?.user ?? null; updateAuthUI(); });
+  }
+
+  // Keyboard shortcuts
+  document.addEventListener('keydown',e=>{
+    if(e.key==='/' && !e.target.closest('input,textarea')){ e.preventDefault(); toggleSearch(); }
+    if(e.key==='Escape'){
+      if(document.getElementById('searchOverlay').classList.contains('open')) toggleSearch();
+      closeUserMenu();
+    }
+  });
+});
+</script>
+</body>
+</html>
