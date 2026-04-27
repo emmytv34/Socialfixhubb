@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login | Social Fix Hub</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/themes.css" />
+  <link rel="stylesheet" href="/css/styles.css" />
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+<div class="page-shell">
+<header class="header"><div class="container header-inner"><a class="brand" href="/index.html"><span class="brand-mark">🛠️</span> Social Fix Hub</a><form class="top-search" data-site-search><input type="search" placeholder="Search guides, tools, resources..." /><button type="submit">Search</button></form><div class="header-actions"><button class="btn" data-theme-toggle>🌙 Dark</button><a class="btn-link" href="/pages/signup.html">Signup</a></div></div></header>
+<main class="container" style="padding:52px 0;max-width:560px;">
+<section class="card">
+<h1 class="section-title">Welcome back 👋</h1>
+<p class="muted">Log in to access your dashboard and saved workflows.</p>
+<form data-login-form>
+<div class="form-group"><label>Email</label><input name="email" type="email" required /></div>
+<div class="form-group"><label>Password</label><input name="password" type="password" required /></div>
+<button class="btn primary" type="submit">Login</button>
+<p class="auth-status"> </p>
+</form>
+</section>
+</main>
+</div>
+<script src="/js/theme.js"></script>
+<script src="/js/supabase-config.js"></script>
+<script src="/js/auth.js"></script>
+<script src="/js/main.js"></script>
+</body>
+</html>
